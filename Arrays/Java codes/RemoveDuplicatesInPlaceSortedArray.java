@@ -2,7 +2,7 @@ import java.util.HashSet;
 
 public class RemoveDuplicatesInPlaceSortedArray {
     
-    // O(n log n), O(n)
+    // bruteforce - O(n log n), O(n)
     public static int removeDuplicates_bruteforce(int arr[], int arr1[]) {
         HashSet<Integer> set = new HashSet<>();
 
@@ -23,6 +23,7 @@ public class RemoveDuplicatesInPlaceSortedArray {
         return idx;
     }
 
+    // optimal - O(n), O(1)
     public static int removeDuplicates_optimal(int arr[], int arr2[]){
         int i = 0;
         int j = 1;

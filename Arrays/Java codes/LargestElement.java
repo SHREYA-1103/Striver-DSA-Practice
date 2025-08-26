@@ -3,14 +3,14 @@ import java.util.Arrays;
 
 public class LargestElement{
 
-    // O(n log n), O(1)
-    public static int findLargest_bruteforce(int arr[]){
+    // bruteforce - O(n log n), O(1)
+    public static int findLargest_brute(int arr[]){
         Arrays.sort(arr);
 
         return arr[arr.length - 1];
     }
 
-    // O(n), O(1)
+    // optimal - O(n), O(1)
     public static int findLargest_optimal(int arr[]){
         int max = Integer.MIN_VALUE;
 
@@ -26,7 +26,7 @@ public class LargestElement{
     public static void main(String args[]){
         int arr[] = {2,5,6,9,10,1,0};
 
-        System.out.println("Largest element in the given array (brute-force approach): " + findLargest_bruteforce(arr));
+        System.out.println("Largest element in the given array (brute-force approach): " + findLargest_brute(arr));
 
         System.out.println("Largest element in the given array (optimal approach): " + findLargest_optimal(arr));
     }

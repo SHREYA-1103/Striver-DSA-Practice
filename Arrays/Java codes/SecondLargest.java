@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class SecondLargest {
 
-    // O(n log n), O(1)
+    // bruteforce - O(n log n), O(1)
     public static int findSecondLargest_bruteforce(int arr[]){
         int len = arr.length;
 
@@ -21,7 +21,7 @@ public class SecondLargest {
         return secondLargest;
     }
 
-    // O(2n), O(1)
+    // better - O(2n), O(1)
     public static int findSecondLargest_better(int arr[]){
         int len = arr.length;
 
@@ -42,7 +42,7 @@ public class SecondLargest {
         return secondLargest;
     }
 
-    // O(n), O(1)
+    // optimal - O(n), O(1)
     public static int findSecondLargest_optimal(int arr[]){
         int len = arr.length;
 

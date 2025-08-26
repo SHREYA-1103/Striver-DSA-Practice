@@ -1,7 +1,6 @@
-
 public class CheckIfSorted {
 
-    // O(n), O(1)
+    // optimal - O(n), O(1)
     public static boolean isSorted(int arr[]){
         int len = arr.length;
 

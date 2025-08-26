@@ -2,7 +2,7 @@ import java.util.Arrays;
 
 public class SecondSmallest {
 
-    // O(n log n), O(1)
+    // bruteforce - O(n log n), O(1)
     public static int findSecondSmallest_bruteforce(int arr[]){
         int len = arr.length;
 
@@ -21,7 +21,7 @@ public class SecondSmallest {
         return secondSmallest;
     }
 
-    // O(2n), O(1)
+    // better - O(2n), O(1)
     public static int findSecondSmallest_better(int arr[]){
         int len = arr.length;
 
@@ -42,7 +42,7 @@ public class SecondSmallest {
         return secondSmallest == Integer.MAX_VALUE ? -1 : secondSmallest;
     }
 
-    // O(n), O(1)
+    // optimal - O(n), O(1)
     public static int findSecondSmallest_optimal(int arr[]){
         int len = arr.length;
 
