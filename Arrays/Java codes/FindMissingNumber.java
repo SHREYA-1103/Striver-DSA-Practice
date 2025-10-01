@@ -1,7 +1,48 @@
+import java.util.*;
 
 public class FindMissingNumber {
 
-    public static int findMissing_xor(int arr[]){
+    // bruteforce - O(n^2), O(1)
+    public static int findMissing_brute(int arr[]){
+        int n = arr.length+1;
+
+        for(int i=1; i<n+1; i++){
+            boolean found = false;
+            for(int j=0; j<arr.length; j++){
+                if(arr[j] == i){
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    
+    // better - O(2n), O(n)
+    public static int findMissing_better(int arr[]){
+        int n = arr.length+1;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i=0; i<n-1; i++){
+            map.put(arr[i], 1);
+        }
+
+        for(int i=1; i<n+1; i++){
+            if(!map.containsKey(i)){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    
+    // optimal - O(n), O(1)
+    public static int findMissing_optimal_xor(int arr[]){
         int n = arr.length+1;
 
         int xor1 = 0;
@@ -17,7 +58,8 @@ public class FindMissingNumber {
         return xor1 ^ xor2;
     }
 
-    public static int findMissing_sum(int arr[]){
+    // optimal - O(n, O(1)
+    public static int findMissing_optimal_sum(int arr[]){
         int n = arr.length+1;
 
         int sum1 = 0;
@@ -36,6 +78,12 @@ public class FindMissingNumber {
     public static void main(String args[]){
         int arr[] = {1,2,5,4};
 
-        System.out.println(findMissing_sum(arr));
+        System.out.println(findMissing_brute(arr));
+
+        System.out.println(findMissing_better(arr));
+
+        System.out.println(findMissing_optimal_xor(arr));
+
+        System.out.println(findMissing_optimal_sum(arr));
     }
 }

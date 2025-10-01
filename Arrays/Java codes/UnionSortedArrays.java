@@ -34,18 +34,18 @@ public class UnionSortedArrays {
         int prev = -1;
 
         while(i < arr1.length && j < arr2.length){
-            if(arr1[i] <= arr2[j] && arr1[i] != prev){
-                list.add(arr1[i]);
-                prev = arr1[i];
+            if(arr1[i] <= arr2[j]){
+                if(arr1[i] != prev){
+                    list.add(arr1[i]);
+                    prev = arr1[i];
+                }
                 i++;
             }
-            else if(arr1[i] > arr2[j] && arr2[j] != prev){
-                list.add(arr2[j]);
-                prev = arr2[j];
-                j++;
-            }
-            else{
-                i++;
+            else if(arr1[i] > arr2[j]){
+                if(arr2[j] != prev){
+                    list.add(arr2[j]);
+                    prev = arr2[j];
+                }
                 j++;
             }
         }
@@ -76,10 +76,17 @@ public class UnionSortedArrays {
     }
 
     public static void main(String args[]){
-        int arr1[] = {1,2,5,7};
-        int arr2[] = {2,5,8,10};
+        int arr1[] = {2,3,4,6};
+        int arr2[] = {2,2,5,7};
 
         int union[] = union_brute(arr1, arr2);
+
+        for(int i=0; i<union.length; i++){
+            System.out.print(union[i] + " ");
+        }
+        System.out.println();
+
+        union = union_optimal(arr1, arr2);
 
         for(int i=0; i<union.length; i++){
             System.out.print(union[i] + " ");

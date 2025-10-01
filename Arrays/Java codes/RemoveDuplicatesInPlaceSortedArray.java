@@ -3,7 +3,7 @@ import java.util.HashSet;
 public class RemoveDuplicatesInPlaceSortedArray {
     
     // bruteforce - O(n log n), O(n)
-    public static int removeDuplicates_bruteforce(int arr[], int arr1[]) {
+    public static int removeDuplicates_brute(int arr[], int arr1[]) {
         HashSet<Integer> set = new HashSet<>();
 
         int len = arr.length;
@@ -34,8 +34,7 @@ public class RemoveDuplicatesInPlaceSortedArray {
 
         while(j<len){
             if(arr2[i] != arr2[j]){
-                arr2[i+1] = arr[j];
-                i++; 
+                arr2[i++] = arr[j];
             }
             j++;
         }
@@ -49,7 +48,7 @@ public class RemoveDuplicatesInPlaceSortedArray {
         int arr1[] = new int[arr.length];
         int arr2[] = new int[arr.length];
 
-        int uniqueCount = removeDuplicates_bruteforce(arr, arr1);
+        int uniqueCount = removeDuplicates_brute(arr, arr1);
 
         System.out.println("Total number of unique elements in the array (brute-force approach): " + uniqueCount);
         

@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class SecondLargest {
 
     // bruteforce - O(n log n), O(1)
-    public static int findSecondLargest_bruteforce(int arr[]){
+    public static int findSecondLargest_brute(int arr[]){
         int len = arr.length;
 
         Arrays.sort(arr);
@@ -65,7 +65,7 @@ public class SecondLargest {
     public static void main(String args[]){
         int arr[] = {2,4,5,10,45,10,45,7};
 
-        System.out.println("The second largest using brute-force approach: " + findSecondLargest_bruteforce(arr));
+        System.out.println("The second largest using brute-force approach: " + findSecondLargest_brute(arr));
 
         System.out.println("The second largest using better approach: " + findSecondLargest_better(arr));
 
