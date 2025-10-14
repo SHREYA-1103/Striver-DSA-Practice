@@ -74,7 +74,7 @@ public class MinDaysToMakeMBouquets {
 
             if(isPossible(bloom, m, k, mid)){ // if mid is the possible answer
                 minDays = mid;
-                high = mid-1; // search left for even min
+                high = mid-1; // search left for even smaller min
             }
             else{
                 low = mid+1;
