@@ -24,7 +24,7 @@ public class Fibonacci {
         return dp[n] = fib_memo(n-1, dp) + fib_memo(n-2, dp);
     }
 
-    // Optimal (DP tabulation) - O(n), O(n)
+    // Optimal1 (DP tabulation) - O(n), O(n)
     public static int fib_tab(int n){
         int dp[] = new int[n+1];
 
@@ -36,6 +36,21 @@ public class Fibonacci {
         }
 
         return dp[n];
+    }
+
+    // optimal2 (tabulation space optimized) - O(n), O(1)
+    public static int fib_so(int n){
+        int a = 0;
+        int b = 1;
+
+        for(int i=02; i<n+1; i++){
+            int c = a+b;
+            a = b;
+            b = c;
+        }
+
+        return b;
+
     }
     
     public static void main(String args[]){
@@ -49,5 +64,7 @@ public class Fibonacci {
         System.out.println("Fibonacci (Memoization): " + fib_memo(n, dp));
 
         System.out.println("Fibonacci (Tabulation): " + fib_tab(n));
+
+        System.out.println("Fibonacci (Tabulation space optimized): " + fib_so(n));
     }
 }

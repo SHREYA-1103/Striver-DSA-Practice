@@ -38,7 +38,7 @@ public class FrogJumps {
         return dp[n] = Math.min(jump1, jump2);
     }
 
-    // Optimal (DP tabulation) - O(n), O(n)
+    // Optimal1 (DP tabulation) - O(n), O(n)
     public static int minEnergy_tab(int n, int height[]){
         int dp[] = new int[n];
 
@@ -50,6 +50,20 @@ public class FrogJumps {
         }
 
         return dp[n-1];
+    }
+
+    // Optimal2 (tabulation space optimized) - O(n), O(1)
+    public static int minEnergy_so(int n, int height[]){
+        int a = 0;
+        int b = height[1] - height[0];
+
+        for(int i=2;  i<n; i++){
+            int c = Math.min(b + Math.abs(height[i] - height[i-1]),  a + Math.abs(height[i] - height[i-2]));
+            a = b;
+            b = c;
+        }
+
+        return b;
     }
     
     public static void main(String args[]){
@@ -64,5 +78,7 @@ public class FrogJumps {
         System.out.println("Minimum energy required to reach nth stair (Memoization): " + minEnergy_memo(n-1, height, dp));
 
         System.out.println("Minimum energy required to reach nth stair (Tabulation): " + minEnergy_tab(n-1, height));
+
+        System.out.println("Minimum energy required to reach nth stair (Tabulation space optimised): " + minEnergy_so(n-1, height));
     }
 }

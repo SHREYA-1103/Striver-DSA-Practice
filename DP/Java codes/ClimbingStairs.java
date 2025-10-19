@@ -24,7 +24,7 @@ public class ClimbingStairs {
         return dp[n] = ways_memo(n-1, dp) + ways_memo(n-2, dp);
     }
 
-    // Optimal (DP tabulation) - O(n), O(n)
+    // Optimal1 (DP tabulation) - O(n), O(n)
     public static int ways_tab(int n){
         int dp[] = new int[n+1];
 
@@ -38,6 +38,20 @@ public class ClimbingStairs {
 
         return dp[n];
     }
+
+    // Optimal2 (tabulation space optimised) - O(n), O(1)
+    public static int ways_so(int n){
+        int a = 1;
+        int b = 2;
+
+        for(int i=3;  i<n+1; i++){
+            int c = a+b;
+            a = b;
+            b = c;                
+        }
+
+        return b;
+    }
     
     public static void main(String args[]){
         int n = 5;
@@ -50,5 +64,7 @@ public class ClimbingStairs {
         System.out.println("No. of distinct ways to reach nth stair (Memoization): " + ways_memo(n, dp));
 
         System.out.println("No. of distinct ways to reach nth stair (Tabulation): " + ways_tab(n));
+
+        System.out.println("No. of distinct ways to reach nth stair (Tabulation space optimized): " + ways_so(n));
     }
 }
