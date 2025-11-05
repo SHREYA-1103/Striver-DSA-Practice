@@ -26,7 +26,7 @@ public class HouseRobberII {
         return dp[idx] = Math.max(pick, notPick);
     }
 
-    // Optimal (DP Tabulation) - O(n), O(n)
+    // Optimal1 (DP Tabulation) - O(n), O(n)
     public static int maxSum_tab(int nums[]) {
         int n = nums.length;
         if (n == 0) return 0;
@@ -45,9 +45,26 @@ public class HouseRobberII {
         return dp[n - 1];
     }
 
+    // Optimal2 (DP Tabulation space optimized) - O(n), O(n)
+    public static int maxSum_so(int nums[]) {
+        int n = nums.length;
+        if (n == 0) return 0;
+
+        int maxa = 0;
+        int maxb= nums[0];
+
+        for (int i = 1; i < n; i++) {
+            int pick = i > 1 ? nums[i] + maxa : nums[i];
+            int notPick = maxb;
+            maxa = maxb;
+            maxb = Math.max(pick, notPick);
+        }
+
+        return maxb;
+    }
+
     public static void main(String args[]) {
-        // Example input
-        int nums[] = {2};
+        int nums[] = {2, 3, 4, 5};
 
         if (nums.length == 0) {
             System.out.println(0);
@@ -73,10 +90,12 @@ public class HouseRobberII {
         Arrays.fill(dp2, -1);
 
         System.out.println(Math.max(
-            maxSum_memo(nums1, nums1.length - 1, dp1),
+            maxSum_memo(nums1, 0, dp1),
             maxSum_memo(nums2, nums2.length - 1, dp2)
         ));
 
         System.out.println(Math.max(maxSum_tab(nums1), maxSum_tab(nums2)));
+
+        System.out.println(Math.max(maxSum_so(nums1), maxSum_so(nums2)));
     }
 }

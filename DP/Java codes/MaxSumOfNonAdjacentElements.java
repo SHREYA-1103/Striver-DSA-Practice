@@ -2,7 +2,7 @@ import java.util.*;
 
 public class MaxSumOfNonAdjacentElements{
 
-    // bruteforce - O(2^n), O(2^n)
+    // bruteforce (recursion) - O(2^n), O(2^n)
     public static int maxSum_rec(int nums[], int idx){
         if(idx == 0){
             return nums[idx];
@@ -19,7 +19,7 @@ public class MaxSumOfNonAdjacentElements{
         return Math.max(pick, notPick);
     }
 
-    // better - O(n), O(2n)
+    // better (DP memoization) - O(n), O(2n)
     public static int maxSum_memo(int nums[], int idx, int dp[]){
         if(idx == 0){
             return dp[idx] = nums[idx];
@@ -40,7 +40,7 @@ public class MaxSumOfNonAdjacentElements{
         return Math.max(pick, notPick);
     }
 
-    // optimal - O(n), O(n)
+    // optimal1 (DP tabulation) - O(n), O(n)
     public static int maxSum_tab(int nums[]){
         int n = nums.length;
         
@@ -59,6 +59,27 @@ public class MaxSumOfNonAdjacentElements{
         return dp[n-1];
     }
 
+    // optimal2 (DP tabulation space optimized) - O(n), O(1)
+    public static int maxSum_so(int nums[]){
+        int n = nums.length;
+
+        if(n == 0) return 0;
+
+        int maxa = 0;
+        int maxb = nums[0];
+
+        for(int i=1; i<n; i++){
+            int pick = i > 1 ? nums[i]+maxa : nums[i];
+            
+            int notPick = 0+maxb;
+
+            maxa = maxb;
+            maxb = Math.max(pick, notPick);
+        }
+
+        return Math.max(maxa, maxb);
+    }
+
     public static void main(String args[]){
         int nums[] = {2,1,1,2};
 
@@ -69,5 +90,7 @@ public class MaxSumOfNonAdjacentElements{
         System.out.println(maxSum_memo(nums, nums.length-1, dp));
 
         System.out.println(maxSum_tab(nums));
+
+        System.out.println(maxSum_so(nums));
     }
 }
