@@ -29,12 +29,36 @@ public class RodCutting {
         return dp[n-1][n];
     }   
     
+    public static int maxProfit_so(int n, int prices[]){
+        int dp[] = new int[n+1];
+
+        for(int j=0; j<=n; j++){
+            dp[j] = j*prices[0]; // using only pieces of length 1
+        }
+
+        for(int i=1; i<n; i++){
+            for(int j=0; j<=n; j++){
+                int notCut = dp[j];
+                int cut = 0;
+                int rodLength = i+1;
+
+                if(rodLength <= j){
+                    cut = prices[i] + dp[j-rodLength];
+                }
+
+                dp[j] = Math.max(cut, notCut);
+            }
+        }
+        
+        return dp[n];
+    }   
+
     public static void main(String args[]){
         int n = 5;
         int prices[] = {2,5,7,8,10};
 
         System.out.println(maxProfit_tab(n, prices));
 
-        // System.out.println(maxProfit_so(n, prices));
+        System.out.println(maxProfit_so(n, prices));
     }
 }

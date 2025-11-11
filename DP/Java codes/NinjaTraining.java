@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Vacation {
+public class NinjaTraining {
 
     //bruteforce (recursion) - O(2^4n), O(2*4n)
     public static int countPoints_rec(int tasks[][], int day, int last){
