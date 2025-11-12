@@ -12,7 +12,7 @@ public class BurstBalloons {
         int n = nums.length;
         int[] arr = new int[n + 2];
         arr[0] = arr[n + 1] = 1;
-        System.arraycopy(nums, 0, arr, 1, n);
+        for (int i = 0; i < n; i++) arr[i + 1] = nums[i];
         n += 2;
 
         int dp[][] = new int[n][n];
