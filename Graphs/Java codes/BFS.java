@@ -14,14 +14,15 @@ public class BFS {
             if(!vis[i]){
                 vis[i] = true;
                 q.add(i);
-            }
-            while(!q.isEmpty()){
-                int node = q.remove();
-                System.out.print(node + " ");
-                for(int v: graph.get(node)){
-                    if(!vis[v]){
-                        vis[v] = true;
-                        q.add(v);
+
+                while(!q.isEmpty()){
+                    int node = q.remove();
+                    System.out.print(node + " ");
+                    for(int v: graph.get(node)){
+                        if(!vis[v]){
+                            vis[v] = true;
+                            q.add(v);
+                        }
                     }
                 }
             }

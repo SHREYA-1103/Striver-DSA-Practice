@@ -17,13 +17,14 @@ public class CountConnectedComponents {
                 count++;
                 vis[i] = true;
                 s.add(i);
-            }
-            while(!s.isEmpty()){
-                int node = s.pop();
-                for(int v: graph.get(node)){
-                    if(!vis[v]){
-                        vis[v] = true;
-                        s.push(v);
+                
+                while(!s.isEmpty()){
+                    int node = s.pop();
+                    for(int v: graph.get(node)){
+                        if(!vis[v]){
+                            vis[v] = true;
+                            s.push(v);
+                        }
                     }
                 }
             }
